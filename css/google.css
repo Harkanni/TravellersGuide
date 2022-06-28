@@ -1,0 +1,295 @@
+body nav {
+  position: sticky !important;
+  z-index: 1000;
+  top: 0% !important;
+  left: 0 !important;
+}
+body #responsive-navbar[data-viscible=false] {
+  transform: translateX(-100%);
+  transition: transform 1s ease-in-out;
+}
+body #responsive-navbar[data-viscible=true] {
+  transform: translateX(0%);
+  transition: transform 1s ease-in-out;
+}
+body #responsive-navbar {
+  background: rgb(2, 2, 2);
+  position: fixed;
+  top: 5px;
+  left: 0;
+  bottom: 1vh;
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top-right-radius: 0.3rem;
+  border-bottom-right-radius: 0.3rem;
+  transition: transform 1s ease-in-out;
+}
+body #responsive-navbar .avatar {
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
+  background: #2d2d2d url("../img/monkey3.jpg");
+  background-position: center;
+  background-size: cover;
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  box-shadow: 0.1px 0.1px 1px 1px gray;
+}
+body #responsive-navbar i {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 2rem;
+  color: rgba(173, 165, 165, 0.548);
+}
+body #responsive-navbar li {
+  list-style: none;
+  margin-bottom: 2rem;
+}
+body #responsive-navbar li a {
+  color: #fff;
+}
+body #responsive-navbar li a:hover {
+  width: 1px !important;
+  text-decoration: none;
+  border-bottom: 1px solid red;
+}
+
+.header {
+  position: relative;
+}
+
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #202020;
+  font-family: "Josefin Sans" !important;
+  min-height: 100vh;
+  min-width: 80vw;
+  color: #fff !important;
+}
+
+header {
+  position: relative;
+  padding: 1rem;
+  overflow: hidden;
+}
+header nav {
+  display: flex;
+  justify-content: space-between;
+}
+header nav i {
+  color: rgb(238, 214, 116);
+  cursor: pointer;
+}
+header nav i.fa-sliders-h {
+  margin-top: 10px;
+  cursor: pointer;
+}
+header nav .search-box {
+  border: 1px solid #fff;
+  border-radius: 5px;
+  padding-top: 0.3rem;
+  padding-left: 10px;
+  padding-bottom: 2px;
+  width: 30vw;
+  height: 30px;
+  display: flex;
+  align-items: center;
+}
+header nav .search-box .search {
+  background: transparent;
+  padding: 0.2rem;
+  outline: none;
+  border: none;
+  font-size: 1rem;
+  font-weight: normal;
+  color: #fff;
+  font-weight: lighter;
+  margin-left: 0.4rem;
+}
+
+main {
+  padding: 1rem;
+}
+main .maps {
+  height: 80vh;
+  min-width: 80vw;
+  background: #2d2d2d;
+  border-radius: 1rem;
+}
+main .routes-wrapper {
+  margin-top: 1rem;
+}
+main .routes-wrapper h3 {
+  font-size: 1rem;
+  background: linear-gradient(to right bottom, #fff 30%, #000);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+main .routes-wrapper .routes {
+  display: flex;
+}
+main .routes-wrapper .routes .routes-box {
+  width: 24vw;
+  min-height: 30vh;
+  margin-right: 10px;
+  background: #2d2d2d;
+  border-radius: 1rem;
+  box-shadow: 4px 5px 20px rgba(0, 0, 0, 0.3);
+  padding: 0.5rem;
+  word-break: break-all;
+}
+main .routes-wrapper .routes .routes-box h1 {
+  background: linear-gradient(to right bottom, #fff 30%, #000);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+main .routes-wrapper .routes .routes-box p {
+  text-align: justify;
+}
+main .routes-wrapper .routes .routes-box p span {
+  font-weight: bold;
+}
+main .reset {
+  margin: 2rem 0 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+main .reset .avatar {
+  width: 8rem;
+  height: 8rem;
+  margin-bottom: 1rem;
+  border-radius: 50%;
+  background: #2d2d2d;
+  box-shadow: 4px 5px 20px rgba(0, 0, 0, 0.3);
+}
+main .reset .avatar-info {
+  text-align: center;
+}
+main .reset .reset-btns .reset-btn {
+  width: 70vw;
+  margin-bottom: 0.5rem;
+}
+main .reset .reset-btns .reset-btn button {
+  width: 100%;
+  background: transparent;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+main .reset .reset-btns .reset-btn button p {
+  margin: 0;
+  display: inline;
+  background: linear-gradient(to right bottom, #fff 30%, #000);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+main .reset .reset-btns .reset-btn button span {
+  font-size: 2rem;
+  display: inline;
+  margin: 0;
+  visibility: hidden;
+}
+main .reset .reset-btns .reset-btn button:hover span {
+  visibility: visible;
+  color: red;
+  color: #fff !important;
+}
+
+footer {
+  height: 0.5rem;
+  width: 9rem;
+  margin: 2rem auto 0;
+  background: #666666;
+  border-radius: 1rem;
+}
+
+@media screen and (max-width: 812px) {
+  .routes {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1rem;
+  }
+  .routes .routes-box {
+    width: 44vw !important;
+    min-height: 30vh !important;
+    margin-right: 0px !important;
+  }
+}
+@media screen and (min-width: 812px) {
+  .maps {
+    min-height: 100vh;
+  }
+
+  .container-wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+  .container-wrapper .routes-wrapper {
+    width: 70%;
+  }
+  .container-wrapper .routes-wrapper .routes {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .container-wrapper .routes-wrapper .routes .routes-box {
+    width: 30vw;
+    min-height: 40vh;
+    margin: 0 1rem 1rem 0;
+    background: #2d2d2d;
+    border-radius: 1rem;
+    box-shadow: 4px 5px 20px rgba(0, 0, 0, 0.3);
+  }
+  .container-wrapper .reset {
+    width: 30%;
+    border-radius: 1rem;
+    border: 1px solid #fff;
+    padding: 1rem;
+  }
+  .container-wrapper .reset .avatar-info p {
+    width: 100%;
+    text-align: justify;
+  }
+  .container-wrapper .reset .reset-btns {
+    width: 100% !important;
+  }
+  .container-wrapper .reset .reset-btns .reset-btn {
+    width: 100% !important;
+  }
+  .container-wrapper .reset .reset-btns button {
+    width: 300%;
+  }
+}
+@media screen and (min-width: 812px) {
+  .routes-box {
+    text-align: center !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .routes-box h1 {
+    font-size: 1.5rem !important;
+    text-align: center;
+  }
+}
+
+/*# sourceMappingURL=google.css.map */
