@@ -27,8 +27,8 @@ directionRender.setMap(map);
 function calcRoute () {
 	// request 
 	var request = {
-		origin: getOrigin(),
-		destination: destination,
+		origin: origin //getOrigin(),
+		destination: destinations // destination,
 		travelMode: google.maps.TravelMode.DRIVING,
 		// unit: google.maps.UnitSystem.IMPERIAL
 	}
@@ -36,11 +36,11 @@ function calcRoute () {
 
 	// PASS REQUEST TO THE ROUTE METHOD
 	directionService.route(request, (result, status)=> {
-		console.info(result)
-		if(result.status !== "OK") {
+		console.log(result)
+		/* if(result.status !== "OK") {
 			console.log("Result not found")
 			alert(`Result not found, \n You Can't Drive to your destination*`)
-		}
+		} */
 
 		if(status == google.maps.DirectionsStatus.OK) {
 			//	get distance and time 
@@ -98,7 +98,7 @@ function getOrigin() {
 
 //	calcRoute()
 function getRoute(event) {
-	if(event === "Enter"){
+	if(event.key === "Enter"){
 		calcRoute()
 	}
 }
