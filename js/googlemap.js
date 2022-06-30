@@ -27,8 +27,8 @@ directionRender.setMap(map);
 function calcRoute () {
 	// request 
 	var request = {
-		origin: origin, //getOrigin(),
-		destination: destinations, // destination,
+		origin: getOrigin(), //origin,
+		destination: destination, // destination,
 		travelMode: google.maps.TravelMode.DRIVING,
 		// unit: google.maps.UnitSystem.IMPERIAL
 	}
