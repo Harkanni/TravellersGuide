@@ -1,4 +1,4 @@
-@media (max-width: 520px) {
+@media (max-width: 720px) {
   nav {
     background: #202020;
   }
@@ -31,7 +31,11 @@
       border-radius: 0 !important;
     }
   }
-
+  .owl-carousel2 {
+    .owl-stage-outer {
+      min-height: 25vh !important;
+    }
+  }
 
   footer {
     // min-height: 10vh !important; //
@@ -40,12 +44,11 @@
     min-height: 10rem !important;
 
     .creators {
-     display: flex; 
-     flex-direction: column;
+      display: flex;
+      flex-direction: column;
     }
   }
 }
-
 
 @media screen and (min-width: 521px) {
   nav {
@@ -68,7 +71,7 @@
   .header {
     .header-desc {
       min-width: 30vw;
-      height: 70vh;
+      // height: 70vh;
     }
   }
 
@@ -77,11 +80,11 @@
       display: flex;
     }
 
-    .weather-forecast {
-      .owl-stage-outer {
-        min-height: 40vh !important;
-      }
-    }
+    // .owl-carousel2 {
+    //   .owl-stage-outer {
+    //     min-height: 40vh !important;
+    //   }
+    // }
   }
 
   footer {
@@ -97,3 +100,23 @@
   }
 }
 
+@media screen and (min-width: 721px) {
+  .header {
+    .header-desc {
+      min-width: 30vw;
+      height: 100%;
+    }
+  }
+  .owl-carousel2 {
+    .owl-stage-outer {
+      min-height: 20vh !important;
+    }
+  }
+}
+@media screen and (min-width: 960px) {
+  .owl-carousel2 {
+    .owl-stage-outer {
+      min-height: 40vh !important;
+    }
+  }
+}

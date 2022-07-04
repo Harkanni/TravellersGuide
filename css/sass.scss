@@ -19,7 +19,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: .5rem 1rem;
+    padding: 0.5rem 1rem;
     background: lighten($color: #202020, $amount: 5%);
 
     i {
@@ -85,7 +85,7 @@ body {
     display: flex;
 
     .img {
-      height: 100%;
+      // height: 100%;
       width: 40vw;
       border-radius: 1rem;
       background: url("../img/img1.jpg") no-repeat;
@@ -135,6 +135,8 @@ body {
 }
 main {
   padding: 1rem;
+  min-height: 100vh;
+  position: relative;
 
   .days {
     display: flex;
@@ -153,8 +155,41 @@ main {
       transition: all 0.5s;
     }
   }
-
+  .owl-carousel1 .owl-stage-outer {
+    position: absolute !important;
+  }
+  .skeleton {
+    // position: fixed;
+    // top: 0;
+    animation: skeleton 1s infinite;
+    border-radius: 1rem;
+    border-radius: 1rem;
+    margin-right: 10px;
+    min-height: 200px;
+    // width: 315px;
+    padding: 20px;
+    cursor: progress;
+    background: /*linear-gradient(0.25turn, transparent, #fff, transparent),*/ linear-gradient(
+        to bottom right,
+        rgba(0, 0, 0, 0.3),
+        rgba(0, 0, 0, 0.5)
+      ),
+      /* linear-gradient(38px circle at 19px 19px, #eee 50%, transparent 51%),*/
+        linear-gradient(#eee, #eee);
+    background-repeat: no-repeat;
+    background-size: 315px 250px, 315 180, 100px 100px, 225px 30px;
+    background-position: -315px 0, 0 0, 0 190px, 50px 195px;
+  }
+  @keyframes skeleton {
+    // from {
+    //   background-color: hsl(200, 20%, 70%);
+    // }
+    to {
+      background-position: 315px 0, 0 0, 0 190px, 50px 195px;
+    }
+  }
   .weather-forecast {
+    // position: relative;
     .weather-box {
       border-radius: 1rem;
       margin-right: 10px;
@@ -213,7 +248,7 @@ main {
   }
 }
 
-@media(min-width:720px) {
+@media (min-width: 720px) {
   i.fa-sliders-h {
     display: none !important;
   }
