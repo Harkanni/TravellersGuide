@@ -1,18 +1,20 @@
 var addressEl = document.getElementById("destination")
 addressEl.addEventListener("keypress", function(event){
 	if(event.key == "Enter") {
+		var w = document.querySelector(".owl-carousel1")
+		w.style.display = "block"
 
 		// REMOVE ALL ITEM IN OWL
 		var remove = document.querySelectorAll(".daily")
 		remove.forEach((item, i) => {
 			console.log(item)
-			$(".owl-carousel").owlCarousel().trigger('remove.owl.carousel', 0).trigger("refresh.owl.carousel")
+			$(".owl-carousel2").owlCarousel().trigger('remove.owl.carousel', 0).trigger("refresh.owl.carousel")
 		})
 
 		var remove = document.querySelectorAll(".hourly")
 		remove.forEach((item, i) => {
 			console.log(item)
-			$(".owl-carousel").owlCarousel().trigger('remove.owl.carousel', 0).trigger("refresh.owl.carousel")
+			$(".owl-carousel2").owlCarousel().trigger('remove.owl.carousel', 0).trigger("refresh.owl.carousel")
 		})
 
 		getWeatherData()
@@ -38,7 +40,7 @@ function getWeatherData() {
 			.then((data) => {
 				console.log(data)
 	
-				show_hourly_weather_Report(data)
+				show_hourly_weather_Report()
 				return data;
 			})
 		
@@ -57,20 +59,20 @@ function getWeatherData() {
 			.then((data) => {
 				console.log(data)
 	
-				show_weather_report(data)
+				show_hourly_weather_Report()
 				return data;
 			})
 		})
 	}
 }
-getWeatherData()
+
 
 function show_weather_report(data) {
 	var weather_report_hourly = data.hourly
 	var weather_report_daily = data.daily
 	var date
 
-	var weatherEl = document.querySelector(".owl-carousel")
+	var weatherEl = document.querySelector(".owl-carousel2")
 
 
 	console.log(weather_report)
@@ -103,11 +105,13 @@ function show_weather_report(data) {
 		weatherEl.appendChild(div)
 	})
 
-	// ACTIVATING THE OWL-CAROUSEL PLUGIN
-	setOwl()
+	// REMOVE SKELETON LOAD	
+	var w = document.querySelector(".owl-carousel1")
+	w.style.display = "none"
+	
 
-	// SETTING THE TIMER
-	//	setTime(date)
+	// ACTIVATING THE OWL-CAROUSEL2 PLUGIN
+	setOwl()
 }
 
 
@@ -119,7 +123,7 @@ function show_hourly_weather_Report() {
 		var remove = document.querySelectorAll(".hourly")
 		remove.forEach((item, i) => {
 			console.log(item)
-			$(".owl-carousel").owlCarousel().trigger('remove.owl.carousel', 0).trigger("refresh.owl.carousel")
+			$(".owl-carousel2").owlCarousel().trigger('remove.owl.carousel', 0).trigger("refresh.owl.carousel")
 		})
 
 
@@ -149,7 +153,7 @@ function show_hourly_weather_Report() {
       		`
 			div.innerHTML = result
 
-			$('.owl-carousel').owlCarousel().trigger('add.owl.carousel', [jQuery(result)]).trigger('refresh.owl.carousel')
+			$('.owl-carousel2').owlCarousel().trigger('add.owl.carousel', [jQuery(result)]).trigger('refresh.owl.carousel')
 
 		})
 		// DEACTIVATING ALL WEATHER REPORTS THAT AREN'T Hourly
@@ -157,11 +161,15 @@ function show_hourly_weather_Report() {
 		var remove = document.querySelectorAll(".daily")
 		remove.forEach((item, i) => {
 			console.log(item)
-			$(".owl-carousel").owlCarousel().trigger('remove.owl.carousel', 0).trigger("refresh.owl.carousel")
+			$(".owl-carousel2").owlCarousel().trigger('remove.owl.carousel', 0).trigger("refresh.owl.carousel")
 		})
 
 
 
+	}).then((data)=>{
+		var w = document.querySelector(".owl-carousel1")
+		w.style.display = "none"
+		setOwl()
 	})
 	//	setTime(dt)
 }
@@ -173,7 +181,7 @@ function show_daily_weather_Report() {
 		var remove = document.querySelectorAll(".daily")
 		remove.forEach((item, i) => {
 			console.log(item)
-			$(".owl-carousel").owlCarousel().trigger('remove.owl.carousel', 0).trigger("refresh.owl.carousel")
+			$(".owl-carousel2").owlCarousel().trigger('remove.owl.carousel', 0).trigger("refresh.owl.carousel")
 		})
 
 
@@ -207,7 +215,7 @@ function show_daily_weather_Report() {
 	      		`
 			div.innerHTML = result
 
-			$('.owl-carousel').owlCarousel().trigger('add.owl.carousel', [jQuery(result)]).trigger('refresh.owl.carousel')
+			$('.owl-carousel2').owlCarousel().trigger('add.owl.carousel', [jQuery(result)]).trigger('refresh.owl.carousel')
 
 		})
 		// DEACTIVATING ALL WEATHER REPORTS THAT AREN'T DAILY
@@ -215,7 +223,7 @@ function show_daily_weather_Report() {
 		var remove = document.querySelectorAll(".hourly")
 		remove.forEach((item, i) => {
 			// console.log(item)
-			$(".owl-carousel").owlCarousel().trigger('remove.owl.carousel', 0).trigger("refresh.owl.carousel")
+			$(".owl-carousel2").owlCarousel().trigger('remove.owl.carousel', 0).trigger("refresh.owl.carousel")
 		})
 
 
@@ -238,7 +246,7 @@ function setTime(dt) {
 
 
 function setOwl() {
-	$('.owl-carousel').owlCarousel({
+	$('.owl-carousel1').owlCarousel({
 		autoplay: false,
 		autoplayHoverPause: true,
 		lazyLoad: true,
@@ -247,10 +255,13 @@ function setOwl() {
 			0: {
 				items: 1
 			},
-			485: {
+			520: {
 				items: 1.8
 			},
 			720: {
+				items: 3
+			},
+			820: {
 				items: 3
 			}
 		},
@@ -315,4 +326,4 @@ options = {
 
 
 
-// $('.owl-carousel').owlCarousel().trigger('add.owl.carousel', [jQuery('<div class="Owl-item">' + result +'</div>')]).trigger('refresh.owl.carousel')
+// $('.owl-carousel2').owlCarousel().trigger('add.owl.carousel', [jQuery('<div class="Owl-item">' + result +'</div>')]).trigger('refresh.owl.carousel')

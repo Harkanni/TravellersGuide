@@ -5,6 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Hackerthon Project</title>
+
 	<!-- PERSONAL STYLE -->
 	<link rel="stylesheet" type="text/css" href="./css/style.css">
 	
@@ -12,22 +13,18 @@
 	<link rel="shortcut icon" type="image/png" href="images/img1.jpg">
 
 	<!-- BOOTSTRAP -->
-	<link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css ">
+	<link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
 
 	<!-- FONT AWESOME -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-	<!-- <link rel="stylesheet" type="text/css" href="./FortAwesome-Font-Awesome-fcec2d1/css/all.css"> -->
+	
 	
 	<!-- OWL CAROUSEL -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-	<!-- <link rel="stylesheet" type="text/css" href="./OwlCarousel2-2.3.4/dist/assets/owl.carousel.css"> -->
 	
-	<!-- VUE JS -->
-	<!-- <script type="text/javascript" src="./js/vue.global.js"></script> -->
 </head>
-<body id="app">
+<body id="app" onload="getWeatherData()">
 	<nav>
-		
 		<i class="fa fa-sliders-h"></i>
 		<div class="home">
 			<h1>Trvlr<span class="home-icon">.</span></h1>
@@ -36,7 +33,7 @@
 		<div class="navbar-menu">
 			<ul class="d-flex">
 				<li>
-					<a href="./news.html">News feed</a>
+					<a href="./index-slides.html">News feed</a>
 				</li>
 				<li>
 					<a href="./googlepage.html">Map</a>
@@ -51,7 +48,7 @@
 					<a href="#">Home</a>
 				</li>
 				<li>
-					<a href="./news.html">News</a>
+					<a href="./index-slides.html">News</a>
 				</li>
 				<li>
 					<a href="./googlepage.html">Map</a>
@@ -91,8 +88,16 @@
 	      <h1 class="weather-nav" onclick="setActive(this); show_daily_weather_Report()">Next 7 days</h1>
 	    </div>
 	    <div class="weather-forecast">
-	    	<!-- Weather boxes would be dynamically injected here -->
-	      <div class="owl-carousel owl-theme"></div>
+			<!-- lazyLoad box-->
+			<div class="owl-carousel owl-theme owl-carousel1">
+				<div class="ml-2 skeleton">1</div>
+				<div class="ml-2 skeleton">2</div>
+				<div class="ml-2 skeleton">3</div>
+				<div class="ml-2 skeleton">4</div>
+			</div>
+
+	    	<!-- Weather boxes would be dynamically injected here after loading -->
+	      <div class="owl-carousel owl-theme owl-carousel2"></div>
 	    </div>
 	    <div class="img-wrapper mt-3">
 	    	<div class="img-box img"></div>
@@ -270,7 +275,8 @@
 					<p> Linode 2022 </p>
 				</div>
 			</div>
-		</div><svg style="position:fixed; top:100vh">
+		</div>
+		<svg style="position:fixed; top:100vh">
 			<defs>
 				<filter id="blob">
 					<feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur"></feGaussianBlur>
@@ -294,8 +300,8 @@
 <script type="text/javascript" src="./js/moment.js"></script>
 
 <!-- OWL -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<!-- <script type="text/javascript" src="./OwlCarousel2-2.3.4/dist/owl.carousel.js"></script> -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+<script type="text/javascript" src="./js/owl.carousel.js"></script>
 
 <!-- GOOGLE MAP API-->
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAWpO4_qBloB9cBaoB11gA3jQ-uVqlR6WU"></script>
@@ -306,11 +312,32 @@
 <script type="text/javascript" defer='true' src="./js/main.js"></script>
 
 
-<!-- <script type="text/javascript">
-	var app = Vue.createApp({
-
+<script type="text/javascript">
+	$('.owl-carousel').owlCarousel({
+		autoplay: false,
+		autoplayHoverPause: true,
+		lazyLoad: true,
+		loop: false,
+		responsive: {
+			0: {
+				items: 1.2
+			},
+			485: {
+				items: 1.8
+			},
+			720: {
+				items: 2.2
+			},
+			820: {
+				items: 2.5
+			},
+			960: {
+				items: 3
+			}
+		},
+		nav: false,
+		dots: false,
 	})
-	app.mount("#app")
-</script> -->
+</script>
 </body>
 </html>
